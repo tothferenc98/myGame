@@ -1,0 +1,60 @@
+.square {
+    -fx-border-style: solid;
+}
+
+.selected {
+    -fx-background-color: silver;
+}
+
+.selectable {
+    -fx-border-width: 7;
+}
+
+.square:hover {
+    -fx-background-color: ghostwhite;
+}
+
+
+.board{
+
+    -fx-border-color: black;
+    -fx-border-width: 3px;
+    -fx-grid-lines-visible: true;
+    -fx-background-color: whitesmoke;
+
+}
+
+.left{
+    -fx-border-color: black;
+    -fx-border-width: 0 0 0 5;
+}
+
+.right{
+    -fx-border-color: black;
+    -fx-border-width: 0 5 0 0;
+}
+
+.down{
+    -fx-border-color: black;
+    -fx-border-width: 0 0 5 0;
+}
+
+.top{
+    -fx-border-color: black;
+    -fx-border-width: 5 0 0 0;
+}
+
+.rightAndDown{
+    -fx-border-color: black;
+    -fx-border-width: 0 5 5 0;
+}
+
+.leftAndRight{
+    -fx-border-color: black;
+    -fx-border-width: 0 5 0 5;
+}
+
+.target{
+    -fx-border-color: black;
+    -fx-border-width: 0 5 5 5;
+}
