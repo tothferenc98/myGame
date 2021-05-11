@@ -21,7 +21,7 @@ import myGame.model.PawnDirection;
 import myGame.model.Position;
 
 public class BoardGameController {
-
+    /*
     private enum SelectionPhase {
         SELECT_FROM,
         SELECT_TO;
@@ -39,7 +39,7 @@ public class BoardGameController {
     private List<Position> selectablePositions = new ArrayList<>();
 
     private Position selected;
-
+    */
     private BoardGameModel model = new BoardGameModel();
 
     @FXML
@@ -47,34 +47,58 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
-        createBoard();
 
+        //createBoard();
+        var circle = new Circle(50);
+        circle.setFill(Color.BLUE);
+        board.add(circle, 4, 1);
 
-        createPieces();
+        board.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                //System.out.println(event.getCode());
+                if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
+                    System.out.println("bal");
+                }
+                else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
+                    System.out.println("jobb");
+                }
+                else if(event.getCode()==KeyCode.UP || event.getCode()==KeyCode.W){
+                    System.out.println("fel");
+                }
+                else if(event.getCode()==KeyCode.DOWN || event.getCode()==KeyCode.S){
+                    System.out.println("le");
+                }
 
-        setSelectablePositions();
-        showSelectablePositions();
-
-
+            }
+        });
 
 
     }
-
+/*
     private void createBoard() {
         for (int i = 0; i < board.getRowCount(); i++) {
             for (int j = 0; j < board.getColumnCount(); j++) {
+
                 var square = createSquare();
                 board.add(square, j, i);
             }
         }
     }
-
+/*
     private StackPane createSquare() {
         var square = new StackPane();
         square.getStyleClass().add("square");
-        square.setOnMouseClicked(this::handleMouseClick);
+        //square.setOnMouseClicked(this::handleMouseClick);
         return square;
     }
+
+
+
+
+
+
+
 
     private void createPieces() {
         for (int i = 0; i < model.getPieceCount(); i++) {
@@ -186,5 +210,5 @@ public class BoardGameController {
         newSquare.getChildren().addAll(oldSquare.getChildren());
         oldSquare.getChildren().clear();
     }
-
+    */
 }

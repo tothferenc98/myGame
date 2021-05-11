@@ -10,10 +10,11 @@
     -fx-border-width: 7;
 }
 
-.square:hover {
-    -fx-background-color: ghostwhite;
-}
 
+
+#board{
+    -fx-grid-lines-visible: true;
+}
 
 .board{
 
@@ -21,6 +22,7 @@
     -fx-border-width: 3px;
     -fx-grid-lines-visible: true;
     -fx-background-color: whitesmoke;
+
 
 }
 
