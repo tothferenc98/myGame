@@ -1,3 +1,4 @@
+/*
 .square {
     -fx-border-style: solid;
 }
@@ -9,11 +10,13 @@
 .selectable {
     -fx-border-width: 7;
 }
-
+*/
 
 
 #board{
     -fx-grid-lines-visible: true;
+    -fx-border-color: black;
+    -fx-border-width: 10 10 10 10;
 }
 
 .board{
@@ -41,7 +44,7 @@
     -fx-border-width: 0 0 5 0;
 }
 
-.top{
+.up{
     -fx-border-color: black;
     -fx-border-width: 5 0 0 0;
 }

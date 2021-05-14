@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -21,7 +22,7 @@ import myGame.model.PawnDirection;
 import myGame.model.Position;
 
 public class BoardGameController {
-    /*
+
     private enum SelectionPhase {
         SELECT_FROM,
         SELECT_TO;
@@ -39,7 +40,7 @@ public class BoardGameController {
     private List<Position> selectablePositions = new ArrayList<>();
 
     private Position selected;
-    */
+
     private BoardGameModel model = new BoardGameModel();
 
     @FXML
@@ -47,58 +48,119 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
+        createBoard();
 
-        //createBoard();
-        var circle = new Circle(50);
-        circle.setFill(Color.BLUE);
-        board.add(circle, 4, 1);
+
+        createPieces();
+
+        setSelectablePositions();
+        showSelectablePositions();
 
         board.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 //System.out.println(event.getCode());
                 if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
-                    System.out.println("bal");
+                    left();
                 }
                 else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
-                    System.out.println("jobb");
+                    right();
                 }
                 else if(event.getCode()==KeyCode.UP || event.getCode()==KeyCode.W){
-                    System.out.println("fel");
+                    up();
                 }
                 else if(event.getCode()==KeyCode.DOWN || event.getCode()==KeyCode.S){
-                    System.out.println("le");
+                    down();
                 }
-
             }
         });
 
 
     }
-/*
+    private void left() {
+
+        System.out.println("bal");
+        //model.move(pieceNumber, direction)
+
+
+    }
+    private void right() {
+        System.out.println("jobb");
+    }
+    private void up() {
+        System.out.println("fel");
+    }
+    private void down() {
+        System.out.println("le");
+    }
+
+
     private void createBoard() {
         for (int i = 0; i < board.getRowCount(); i++) {
             for (int j = 0; j < board.getColumnCount(); j++) {
-
                 var square = createSquare();
                 board.add(square, j, i);
+
+
+                if(i==0){
+                    switch(j) {
+                        case 0,3 -> square.getStyleClass().add("right");
+                        case 1,4 -> square.getStyleClass().add("left");
+                        case 2,6 -> square.getStyleClass().add("down");
+                    }
+                }
+                if(i==1){
+                    switch(j) {
+                        case 2,6 -> square.getStyleClass().add("up");
+                    }
+                }
+                if(i==2){
+                    switch(j) {
+                        case 1 -> square.getStyleClass().add("down");
+                        case 2,5 -> square.getStyleClass().add("right");
+                        case 3,6 -> square.getStyleClass().add("left");
+                    }
+                }
+                if(i==3){
+                    switch(j) {
+                        case 1 -> square.getStyleClass().add("up");
+                        case 3 -> square.getStyleClass().add("rightAndDown");
+                        case 4 -> square.getStyleClass().add("leftAndRight");
+                        case 5 -> square.getStyleClass().add("left");
+                        case 6 -> square.getStyleClass().add("down");
+                    }
+                }
+                if(i==4){
+                    switch(j) {
+                        case 0,4 -> square.getStyleClass().add("down");
+                        case 3,6 -> square.getStyleClass().add("up");
+                    }
+                }
+                if(i==5){
+                    switch(j) {
+                        case 0,4 -> square.getStyleClass().add("up");
+                        case 1 -> square.getStyleClass().add("right");
+                        case 2 -> square.getStyleClass().add("target");
+                        case 3 -> square.getStyleClass().add("left");
+                    }
+                }
+                if(i==6){
+                    switch(j) {
+                        case 3,5 -> square.getStyleClass().add("right");
+                        case 4,6 -> square.getStyleClass().add("left");
+                        case 2 -> square.getStyleClass().add("up");
+                    }
+                }
             }
         }
     }
-/*
+
     private StackPane createSquare() {
         var square = new StackPane();
         square.getStyleClass().add("square");
-        //square.setOnMouseClicked(this::handleMouseClick);
+        square.setOnMouseClicked(this::handleMouseClick);
         return square;
     }
-
-
-
-
-
-
-
 
     private void createPieces() {
         for (int i = 0; i < model.getPieceCount(); i++) {
@@ -210,5 +272,5 @@ public class BoardGameController {
         newSquare.getChildren().addAll(oldSquare.getChildren());
         oldSquare.getChildren().clear();
     }
-    */
+
 }
