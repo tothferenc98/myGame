@@ -52,7 +52,7 @@ public class BoardGameController {
 
         createBoard();
         createTargetLabel();
-
+        createCircle();
 
 /*
 
@@ -83,25 +83,24 @@ public class BoardGameController {
     }
 
     private void left() {
-
-        System.out.println("bal");
+        Position old = model.circlePosition;
         model.move2(PawnDirection.LEFT);
-        System.out.println(model.circlePosition);
+        piecePositionChange(old,model.circlePosition);
     }
     private void right() {
-        System.out.println("jobb");
+        Position old = model.circlePosition;
         model.move2(PawnDirection.RIGHT);
-        System.out.println(model.circlePosition);
+        piecePositionChange(old,model.circlePosition);
     }
     private void up() {
-        System.out.println("fel");
+        Position old = model.circlePosition;
         model.move2(PawnDirection.UP);
-        System.out.println(model.circlePosition);
+        piecePositionChange(old,model.circlePosition);
     }
     private void down() {
-        System.out.println("le");
+        Position old = model.circlePosition;
         model.move2(PawnDirection.DOWN);
-        System.out.println(model.circlePosition);
+        piecePositionChange(old,model.circlePosition);
     }
 
     private void createBoard() {
@@ -178,6 +177,14 @@ public class BoardGameController {
         board.add(label, 2, 5);
 
         return label;
+    }
+
+    private Circle createCircle() {
+
+        var circle = new Circle(50);
+        circle.setFill(Color.BLUE);
+        getSquare(model.circlePosition).getChildren().add(circle);
+        return circle;
     }
 /*
     private void createPieces() {
@@ -283,7 +290,7 @@ public class BoardGameController {
         throw new AssertionError();
     }
 
-    private void piecePositionChange(ObservableValue<? extends Position> observable, Position oldPosition, Position newPosition) {
+    private void piecePositionChange( Position oldPosition, Position newPosition) { //ObservableValue<? extends Position> observable,
         Logger.debug("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
         StackPane newSquare = getSquare(newPosition);
