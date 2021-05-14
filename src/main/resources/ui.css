@@ -1,65 +1,64 @@
-/*
 .square {
     -fx-border-style: solid;
 }
 
 .selected {
-    -fx-background-color: silver;
+    -fx-background-color: Grey;
 }
 
 .selectable {
-    -fx-border-width: 7;
+    -fx-background-color: silver;
 }
-*/
+/*
+.square:hover {
+    -fx-background-color: ghostwhite;
+}*/
 
 
 #board{
-    -fx-grid-lines-visible: true;
-    -fx-border-color: black;
-    -fx-border-width: 10 10 10 10;
-}
-
-.board{
 
     -fx-border-color: black;
-    -fx-border-width: 3px;
-    -fx-grid-lines-visible: true;
+    -fx-border-width: 10px;
     -fx-background-color: whitesmoke;
-
 
 }
 
 .left{
     -fx-border-color: black;
-    -fx-border-width: 0 0 0 5;
+    -fx-border-width: 1 1 1 5;
 }
 
 .right{
     -fx-border-color: black;
-    -fx-border-width: 0 5 0 0;
+    -fx-border-width: 1 5 1 1;
 }
 
 .down{
     -fx-border-color: black;
-    -fx-border-width: 0 0 5 0;
+    -fx-border-width: 1 1 5 1;
 }
 
 .up{
     -fx-border-color: black;
-    -fx-border-width: 5 0 0 0;
+    -fx-border-width: 5 1 1 1;
 }
 
 .rightAndDown{
     -fx-border-color: black;
-    -fx-border-width: 0 5 5 0;
+    -fx-border-width: 1 5 5 1;
 }
 
 .leftAndRight{
     -fx-border-color: black;
-    -fx-border-width: 0 5 0 5;
+    -fx-border-width: 1 5 1 5;
 }
 
 .target{
     -fx-border-color: black;
-    -fx-border-width: 0 5 5 5;
+    -fx-border-width: 1 5 5 5;
+}
+.targetLabel{
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+
 }

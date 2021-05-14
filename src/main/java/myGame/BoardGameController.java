@@ -6,10 +6,10 @@ import java.util.List;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -22,7 +22,7 @@ import myGame.model.PawnDirection;
 import myGame.model.Position;
 
 public class BoardGameController {
-
+/*
     private enum SelectionPhase {
         SELECT_FROM,
         SELECT_TO;
@@ -36,7 +36,7 @@ public class BoardGameController {
     }
 
     private SelectionPhase selectionPhase = SelectionPhase.SELECT_FROM;
-
+*/
     private List<Position> selectablePositions = new ArrayList<>();
 
     private Position selected;
@@ -48,14 +48,20 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
+
+
         createBoard();
+        createTargetLabel();
 
 
-        createPieces();
+/*
+
+
 
         setSelectablePositions();
         showSelectablePositions();
 
+        */
         board.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -74,26 +80,29 @@ public class BoardGameController {
                 }
             }
         });
-
-
     }
+
     private void left() {
 
         System.out.println("bal");
-        //model.move(pieceNumber, direction)
-
-
+        model.move2(PawnDirection.LEFT);
+        System.out.println(model.circlePosition);
     }
     private void right() {
         System.out.println("jobb");
+        model.move2(PawnDirection.RIGHT);
+        System.out.println(model.circlePosition);
     }
     private void up() {
         System.out.println("fel");
+        model.move2(PawnDirection.UP);
+        System.out.println(model.circlePosition);
     }
     private void down() {
         System.out.println("le");
+        model.move2(PawnDirection.DOWN);
+        System.out.println(model.circlePosition);
     }
-
 
     private void createBoard() {
         for (int i = 0; i < board.getRowCount(); i++) {
@@ -158,10 +167,19 @@ public class BoardGameController {
     private StackPane createSquare() {
         var square = new StackPane();
         square.getStyleClass().add("square");
-        square.setOnMouseClicked(this::handleMouseClick);
+/*        square.setOnMouseClicked(this::handleMouseClick);*/
         return square;
     }
 
+    private Label createTargetLabel() {
+        var label = new Label();
+        label.setText("Cél");
+        label.getStyleClass().add("targetLabel");
+        board.add(label, 2, 5);
+
+        return label;
+    }
+/*
     private void createPieces() {
         for (int i = 0; i < model.getPieceCount(); i++) {
             model.positionProperty(i).addListener(this::piecePositionChange);
@@ -255,7 +273,7 @@ public class BoardGameController {
             square.getStyleClass().remove("selectable");
         }
     }
-
+*/
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
             if (GridPane.getRowIndex(child) == position.row() && GridPane.getColumnIndex(child) == position.col()) {
