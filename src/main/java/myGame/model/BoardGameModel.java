@@ -1,7 +1,7 @@
 package myGame.model;
 
 import javafx.beans.property.ObjectProperty;
-
+import org.tinylog.Logger;
 import java.util.*;
 
 public class BoardGameModel {
@@ -24,7 +24,7 @@ public class BoardGameModel {
             //golyoPosition=golyoPosition(moveTo(direction))
             var teszt = getValidMoves();
             if(teszt.contains(direction)){
-                System.out.println("move TESZT");
+                //System.out.println("move TESZT");
                 circlePosition=circlePosition.moveTo(direction);
             }
             else {
@@ -176,7 +176,8 @@ public class BoardGameModel {
                 validMoves.add(PawnDirection.DOWN);
             }
             else if (isValidMove(direction) && circlePosition.equals(new Position(5,2))) {
-                System.out.println("GYŐZELEM"); //****************************************************************************************************************
+                Logger.info("");
+
             }
             else if (isValidMove(direction) && circlePosition.equals(new Position(5,3))) {
                 validMoves.add(PawnDirection.UP);

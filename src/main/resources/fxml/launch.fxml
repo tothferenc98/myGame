@@ -19,7 +19,7 @@
       <TextField fx:id="usernameTextfield" layoutX="292.0" layoutY="324.0" prefHeight="26.0" prefWidth="158.0" />
       <Button fx:id="startButton" layoutX="273.0" layoutY="396.0" mnemonicParsing="false" onAction="#startAction" prefHeight="51.0" prefWidth="105.0" text="Start game" />
       <Label fx:id="errorLabel" layoutX="296.0" layoutY="294.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e" />
-      <Label layoutX="59.0" layoutY="447.0" prefHeight="201.0" prefWidth="534.0" text="A játék egy labirintuson alapszik, a golyóval csak a 4 irányba lehet mozogni, és addig mozog, ameddig a falba vagy a pálya szélébe nem, ütközik. " textAlignment="CENTER" textFill="#002366" wrapText="true">
+      <Label layoutX="59.0" layoutY="471.0" prefHeight="201.0" prefWidth="534.0" text="Juttassuk el a golyót a labirintus megjelölt mezőjére! A golyó a négy égtáj irányába mozoghat. Ha elindul valamelyik irányba, akkor addig gurul, amíg falba vagy a pálya szélébe nem ütközik." textAlignment="CENTER" textFill="#002366" wrapText="true">
          <font>
             <Font name="SansSerif Bold" size="23.0" />
          </font>

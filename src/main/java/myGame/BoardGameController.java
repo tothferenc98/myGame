@@ -51,6 +51,7 @@ public class BoardGameController {
 
     private String userName;
     private int steps=0;
+    private boolean inTarget=false;
 
     @FXML
     private GridPane board;
@@ -67,6 +68,9 @@ public class BoardGameController {
 
     @FXML
     private Button doneButton;
+
+    @FXML
+    private Button resetButton;
 
 
     @FXML
@@ -89,21 +93,25 @@ public class BoardGameController {
     @FXML
     private void handleOnKeyPressed(KeyEvent event)
     {
+        //System.out.println(event.getCode());
+        if(inTarget==false)
+        {
+            if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
+                left();
 
-                //System.out.println(event.getCode());
-                if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
-                    left();
+            }
+            else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
+                right();
+            }
+            else if(event.getCode()==KeyCode.UP || event.getCode()==KeyCode.W){
+                up();
+            }
+            else if(event.getCode()==KeyCode.DOWN || event.getCode()==KeyCode.S){
+                down();
+            }
+        }
 
-                }
-                else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
-                    right();
-                }
-                else if(event.getCode()==KeyCode.UP || event.getCode()==KeyCode.W){
-                    up();
-                }
-                else if(event.getCode()==KeyCode.DOWN || event.getCode()==KeyCode.S){
-                    down();
-                }
+
     }
 
     public void resetGame(ActionEvent actionEvent) throws IOException {
@@ -353,11 +361,18 @@ public class BoardGameController {
     }
 
     private void positionChange(Position oldPosition, Position newPosition) { //ObservableValue<? extends Position> observable,
-        Logger.debug("Move: {} -> {}", oldPosition, newPosition);
+        Logger.info("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
         StackPane newSquare = getSquare(newPosition);
         newSquare.getChildren().addAll(oldSquare.getChildren());
         oldSquare.getChildren().clear();
+        Position target = new Position(5,2);
+        if(newPosition.equals(target)){
+            inTarget=true;
+            resetButton.setDisable(true);
+            doneButton.setDisable(true);
+        }
+
     }
 
 }
