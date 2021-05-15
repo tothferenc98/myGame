@@ -21,6 +21,7 @@ public class LaunchController {
     @FXML
     private Label errorLabel;
 
+
     public void startAction(ActionEvent actionEvent) throws IOException {
         if (usernameTextfield.getText().isEmpty()) {
             errorLabel.setText("* Username is empty!");
@@ -32,8 +33,8 @@ public class LaunchController {
             stage.setScene(new Scene(root));
             stage.show();
             stage.getScene().getRoot().requestFocus();
-            Logger.info("Username is set to {}, loading game scene.", usernameTextfield.getText());
 
+            Logger.info("Username is set to {}, loading game scene.", usernameTextfield.getText());
 
         }
 

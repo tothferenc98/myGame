@@ -5,6 +5,7 @@ import java.util.List;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -46,6 +47,23 @@ public class BoardGameController {
     @FXML
     private GridPane board;
 
+
+    @FXML
+    private Label usernameLabel;
+
+    @FXML
+    private GridPane gameGrid;
+
+    @FXML
+    private Label stepLabel;
+
+    @FXML
+    private Label solvedLabel;
+
+    @FXML
+    private Button doneButton;
+
+
     @FXML
     private void initialize() {
 
@@ -53,7 +71,7 @@ public class BoardGameController {
         createBoard();
         createTargetLabel();
         createCircle();
-
+        board.setOnKeyPressed(this::handleOnKeyPressed);
 /*
 
 
@@ -62,9 +80,11 @@ public class BoardGameController {
         showSelectablePositions();
 
         */
-        board.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
+    }
+    @FXML
+    private void handleOnKeyPressed(KeyEvent event)
+    {
+
                 //System.out.println(event.getCode());
                 if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
                     left();
@@ -78,10 +98,7 @@ public class BoardGameController {
                 else if(event.getCode()==KeyCode.DOWN || event.getCode()==KeyCode.S){
                     down();
                 }
-            }
-        });
     }
-
     private void left() {
         Position old = model.circlePosition;
         try {
@@ -196,7 +213,7 @@ public class BoardGameController {
 
     private Circle createCircle() {
 
-        var circle = new Circle(50);
+        var circle = new Circle(35);
         circle.setFill(Color.BLUE);
         getSquare(model.circlePosition).getChildren().add(circle);
         return circle;
@@ -204,7 +221,7 @@ public class BoardGameController {
 
     public void initdata(String userName) {
         this.userName = userName;
-        //usernameLabel.setText("Current user: " + this.userName);
+        usernameLabel.setText("Current user: " + this.userName);
     }
 
 /*

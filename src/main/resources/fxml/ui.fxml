@@ -1,31 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="board" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" scaleShape="false" stylesheets="@../ui.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myGame.BoardGameController">
-    <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-    </rowConstraints>
-    <opaqueInsets>
-        <Insets />
-    </opaqueInsets>
-
-</GridPane>
+<Pane onKeyPressed="#handleOnKeyPressed" prefHeight="700.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myGame.BoardGameController">
+   <children>
+      <Label fx:id="usernameLabel" layoutX="45.0" layoutY="7.0" prefHeight="16.0" prefWidth="565.0" text="Current user: ">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <GridPane fx:id="board" layoutX="25.0" layoutY="40.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" scaleShape="false" stylesheets="@../ui.css">
+          <columnConstraints>
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+          </columnConstraints>
+          <rowConstraints>
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+          <opaqueInsets>
+              <Insets />
+          </opaqueInsets>
+      
+      </GridPane>
+      <Button fx:id="doneButton" layoutX="305.0" layoutY="649.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" text="Give up" /> <!--onAction="#finishGame"-->
+      <Label fx:id="solvedLabel" layoutX="426.0" layoutY="648.0" prefHeight="42.0" prefWidth="184.0" textFill="#002466">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="658.0" prefHeight="16.0" prefWidth="73.0" text="Steps:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="stepLabel" layoutX="127.0" layoutY="736.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="resetButton" layoutX="190.0" layoutY="649.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" text="Reset" /> <!--onAction="#resetGame"-->
+   </children>
+</Pane>
