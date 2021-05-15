@@ -9,6 +9,8 @@ public class BoardGameModel {
 
     public static int BOARD_SIZE = 7;
 
+
+
     public BoardGameModel() {
 
     }
@@ -30,6 +32,7 @@ public class BoardGameModel {
             }
 
         }
+
     }
 
     private void checkPieces(Piece[] pieces) {

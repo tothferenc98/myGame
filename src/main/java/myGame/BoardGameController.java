@@ -1,10 +1,16 @@
 package myGame;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -14,6 +20,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import javafx.stage.Stage;
 import org.tinylog.Logger;
 
 import myGame.model.BoardGameModel;
@@ -35,14 +42,15 @@ public class BoardGameController {
     }
 
     private SelectionPhase selectionPhase = SelectionPhase.SELECT_FROM;
-*/
+
     private List<Position> selectablePositions = new ArrayList<>();
 
     private Position selected;
-
+*/
     private BoardGameModel model = new BoardGameModel();
 
     private String userName;
+    private int steps=0;
 
     @FXML
     private GridPane board;
@@ -50,9 +58,6 @@ public class BoardGameController {
 
     @FXML
     private Label usernameLabel;
-
-    @FXML
-    private GridPane gameGrid;
 
     @FXML
     private Label stepLabel;
@@ -88,6 +93,7 @@ public class BoardGameController {
                 //System.out.println(event.getCode());
                 if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
                     left();
+
                 }
                 else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
                     right();
@@ -99,11 +105,21 @@ public class BoardGameController {
                     down();
                 }
     }
+
+    public void resetGame(ActionEvent actionEvent) throws IOException {
+        Position original = new Position(1,4);
+        positionChange(model.circlePosition, original);
+        model.circlePosition=original;
+
+    }
+
     private void left() {
         Position old = model.circlePosition;
         try {
             model.move(PawnDirection.LEFT);
             positionChange(old,model.circlePosition);
+            stepIncreaser();
+
         }catch (Exception e){}
 
     }
@@ -112,9 +128,8 @@ public class BoardGameController {
         try{
             model.move(PawnDirection.RIGHT);
             positionChange(old,model.circlePosition);
+            stepIncreaser();
         }catch (Exception e){}
-
-
 
     }
     private void up() {
@@ -122,6 +137,7 @@ public class BoardGameController {
         try{
             model.move(PawnDirection.UP);
             positionChange(old,model.circlePosition);
+            stepIncreaser();
         }catch (Exception e){}
 
     }
@@ -130,9 +146,15 @@ public class BoardGameController {
         try{
             model.move(PawnDirection.DOWN);
             positionChange(old,model.circlePosition);
+            stepIncreaser();
         }catch (Exception e){}
 
 
+    }
+
+    public void stepIncreaser(){
+        steps+=1;
+        stepLabel.setText(String.valueOf(steps));
     }
 
     private void createBoard() {
@@ -223,6 +245,8 @@ public class BoardGameController {
         this.userName = userName;
         usernameLabel.setText("Current user: " + this.userName);
     }
+
+
 
 /*
     private void createPieces() {

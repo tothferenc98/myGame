@@ -51,11 +51,11 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="stepLabel" layoutX="127.0" layoutY="736.0" text="0">
+      <Label fx:id="stepLabel" layoutX="112.0" layoutY="659.0" prefHeight="21.0" prefWidth="56.0" text="0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="resetButton" layoutX="190.0" layoutY="649.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" text="Reset" /> <!--onAction="#resetGame"-->
+      <Button fx:id="resetButton" layoutX="190.0" layoutY="649.0" onAction="#resetGame" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" text="Reset" />
    </children>
 </Pane>
