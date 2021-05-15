@@ -17,12 +17,12 @@ public class BoardGameModel {
         checkPieces(pieces);
     }
 
-    public void move2(PawnDirection direction){
+    public void move(PawnDirection direction){
         while(true){
             //golyoPosition=golyoPosition(moveTo(direction))
             var teszt = getValidMoves();
             if(teszt.contains(direction)){
-                System.out.println("move2 TESZT");
+                System.out.println("move TESZT");
                 circlePosition=circlePosition.moveTo(direction);
             }
             else {
@@ -253,7 +253,7 @@ public class BoardGameModel {
     public static void main(String[] args) {
         BoardGameModel model = new BoardGameModel();
         System.out.println(model);
-        //model.move2(PawnDirection.DOWN);
+        //model.move(PawnDirection.DOWN);
         //System.out.println(model.circlePosition.toString());
 
 

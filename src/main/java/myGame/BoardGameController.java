@@ -3,13 +3,11 @@ package myGame;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -42,6 +40,8 @@ public class BoardGameController {
     private Position selected;
 
     private BoardGameModel model = new BoardGameModel();
+
+    private String userName;
 
     @FXML
     private GridPane board;
@@ -84,23 +84,38 @@ public class BoardGameController {
 
     private void left() {
         Position old = model.circlePosition;
-        model.move2(PawnDirection.LEFT);
-        piecePositionChange(old,model.circlePosition);
+        try {
+            model.move(PawnDirection.LEFT);
+            positionChange(old,model.circlePosition);
+        }catch (Exception e){}
+
     }
     private void right() {
         Position old = model.circlePosition;
-        model.move2(PawnDirection.RIGHT);
-        piecePositionChange(old,model.circlePosition);
+        try{
+            model.move(PawnDirection.RIGHT);
+            positionChange(old,model.circlePosition);
+        }catch (Exception e){}
+
+
+
     }
     private void up() {
         Position old = model.circlePosition;
-        model.move2(PawnDirection.UP);
-        piecePositionChange(old,model.circlePosition);
+        try{
+            model.move(PawnDirection.UP);
+            positionChange(old,model.circlePosition);
+        }catch (Exception e){}
+
     }
     private void down() {
         Position old = model.circlePosition;
-        model.move2(PawnDirection.DOWN);
-        piecePositionChange(old,model.circlePosition);
+        try{
+            model.move(PawnDirection.DOWN);
+            positionChange(old,model.circlePosition);
+        }catch (Exception e){}
+
+
     }
 
     private void createBoard() {
@@ -186,6 +201,12 @@ public class BoardGameController {
         getSquare(model.circlePosition).getChildren().add(circle);
         return circle;
     }
+
+    public void initdata(String userName) {
+        this.userName = userName;
+        //usernameLabel.setText("Current user: " + this.userName);
+    }
+
 /*
     private void createPieces() {
         for (int i = 0; i < model.getPieceCount(); i++) {
@@ -290,7 +311,7 @@ public class BoardGameController {
         throw new AssertionError();
     }
 
-    private void piecePositionChange( Position oldPosition, Position newPosition) { //ObservableValue<? extends Position> observable,
+    private void positionChange(Position oldPosition, Position newPosition) { //ObservableValue<? extends Position> observable,
         Logger.debug("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
         StackPane newSquare = getSquare(newPosition);
