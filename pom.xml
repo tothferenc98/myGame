@@ -6,9 +6,7 @@
     <artifactId>homework-template-project</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <description>Juttassuk el a golyót a 21. ábrán látható labirintus megjelölt mezőjére! A
-        golyó a négy égtáj irányába mozoghat. Ha elindul valamelyik irányba, akkor
-        addig gurul, amíg falba vagy a pálya szélébe nem ütközik.</description>
+    <description>Juttassuk el a golyót a 21. ábrán látható labirintus megjelölt mezőjére! A golyó a négy égtáj irányába mozoghat. Ha elindul valamelyik irányba, akkor addig gurul, amíg falba vagy a pálya szélébe nem ütközik.</description>
     <developers>
         <developer>
             <name>Tóth Ferenc</name>
@@ -24,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <maven.compiler.release>16</maven.compiler.release>
-        <exec.mainClass>remove.me.RemoveThisClass</exec.mainClass>
+        <exec.mainClass>myGame.Main</exec.mainClass>
         <javafx.version>16</javafx.version>
         <junit.jupiter.version>5.7.1</junit.jupiter.version>
         <jacoco.version>0.8.7</jacoco.version>

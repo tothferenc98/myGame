@@ -2,19 +2,6 @@
     -fx-border-style: solid;
 }
 
-.selected {
-    -fx-background-color: Grey;
-}
-
-.selectable {
-    -fx-background-color: silver;
-}
-/*
-.square:hover {
-    -fx-background-color: ghostwhite;
-}*/
-
-
 #board{
 
     -fx-border-color: black;

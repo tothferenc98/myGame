@@ -51,6 +51,7 @@ public class ListController {
         Logger.info("Loading launch scene.");
     }
 
+    @FXML
     public void initialize(){
         List<GameResult> leaderboardList = GameResultDeserializer.deserialize();
         userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
@@ -60,7 +61,7 @@ public class ListController {
         ObservableList<GameResult> observableResult = FXCollections.observableArrayList();
         observableResult.addAll(leaderboardList);
         playerListTable.setItems(observableResult);
-        Logger.info("Loading leaderboard..");
+        Logger.info("Loading scoreboard");
     }
 
 }

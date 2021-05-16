@@ -31,25 +31,7 @@ import myGame.model.PawnDirection;
 import myGame.model.Position;
 
 public class BoardGameController {
-/*
-    private enum SelectionPhase {
-        SELECT_FROM,
-        SELECT_TO;
 
-        public SelectionPhase alter() {
-            return switch (this) {
-                case SELECT_FROM -> SELECT_TO;
-                case SELECT_TO -> SELECT_FROM;
-            };
-        }
-    }
-
-    private SelectionPhase selectionPhase = SelectionPhase.SELECT_FROM;
-
-    private List<Position> selectablePositions = new ArrayList<>();
-
-    private Position selected;
-*/
     private BoardGameModel model = new BoardGameModel();
 
     private String userName;
@@ -78,20 +60,11 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
-
-
         createBoard();
         createTargetLabel();
         createCircle();
         board.setOnKeyPressed(this::handleOnKeyPressed);
-/*
 
-
-
-        setSelectablePositions();
-        showSelectablePositions();
-
-        */
     }
     @FXML
     private void handleOnKeyPressed(KeyEvent event)
@@ -119,8 +92,11 @@ public class BoardGameController {
 
     public void resetGame(ActionEvent actionEvent) throws IOException {
         Position original = new Position(1,4);
-        positionChange(model.circlePosition, original);
-        model.circlePosition=original;
+        if(!model.circlePosition.equals(original)){
+            positionChange(model.circlePosition, original);
+            model.circlePosition=original;
+        }
+
     }
 
     public void finishGame(ActionEvent actionEvent) throws IOException {

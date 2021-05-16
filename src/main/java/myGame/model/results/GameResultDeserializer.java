@@ -16,7 +16,7 @@ public class GameResultDeserializer {
         try{
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
-            File file = new File("./test.json");
+            File file = new File("./scoreboard.json");
             if(!file.exists()) {
                 file.createNewFile();
                 return List.of();

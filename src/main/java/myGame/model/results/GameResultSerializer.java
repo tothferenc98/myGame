@@ -15,7 +15,7 @@ public class GameResultSerializer {
 
         List<myGame.model.results.GameResult> gameResultList = myGame.model.results.GameResultDeserializer.deserialize();
         try {
-            File file = new File("./test.json");
+            File file = new File("./scoreboard.json");
             file.createNewFile();
             FileWriter fileWriter = new FileWriter(file);
             ObjectMapper mapper = new ObjectMapper();
