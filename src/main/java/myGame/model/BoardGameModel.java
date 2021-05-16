@@ -256,7 +256,7 @@ public class BoardGameModel {
 
     public static void main(String[] args) {
         BoardGameModel model = new BoardGameModel();
-        System.out.println(model);
+        //System.out.println(model + "dasdadsd");
         //model.move(PawnDirection.DOWN);
         //System.out.println(model.circlePosition.toString());
 

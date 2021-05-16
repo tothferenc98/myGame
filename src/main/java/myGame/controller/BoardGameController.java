@@ -1,9 +1,8 @@
-package myGame;
+package myGame.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -118,6 +117,16 @@ public class BoardGameController {
         Position original = new Position(1,4);
         positionChange(model.circlePosition, original);
         model.circlePosition=original;
+
+    }
+
+    public void finishGame(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/list.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
 
     }
 
@@ -360,7 +369,7 @@ public class BoardGameController {
         throw new AssertionError();
     }
 
-    private void positionChange(Position oldPosition, Position newPosition) { //ObservableValue<? extends Position> observable,
+    private void positionChange(Position oldPosition, Position newPosition) throws IOException { //ObservableValue<? extends Position> observable,
         Logger.info("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
         StackPane newSquare = getSquare(newPosition);
@@ -370,7 +379,9 @@ public class BoardGameController {
         if(newPosition.equals(target)){
             inTarget=true;
             resetButton.setDisable(true);
-            doneButton.setDisable(true);
+            doneButton.setText("Player list");
+            solvedLabel.setText("Victory");
+
         }
 
     }

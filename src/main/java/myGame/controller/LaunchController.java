@@ -1,4 +1,4 @@
-package myGame;
+package myGame.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +32,6 @@ public class LaunchController {
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-            stage.getScene().getRoot().requestFocus();
 
             Logger.info("Username is set to {}, loading game scene.", usernameTextfield.getText());
 
