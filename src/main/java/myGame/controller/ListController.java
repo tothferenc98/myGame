@@ -8,44 +8,39 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import myGame.model.results.GameResult;
+import myGame.model.results.GameResultDeserializer;
+import org.tinylog.Logger;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
-/*
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.time.DurationFormatUtils;
-import rollingcubes.results.GameResult;
-import rollingcubes.results.GameResultDao;
- */
 public class ListController {
-/*
-    @FXML
-    private TableView<GameResult> toptenTable;
 
     @FXML
-    private TableColumn<GameResult, String> player;
+    private TableView<GameResult> playerListTable;
 
     @FXML
-    private TableColumn<GameResult, Integer> steps;
+    private TableColumn<GameResult, String> userName;
 
     @FXML
-    private TableColumn<GameResult, Duration> duration;
+    private TableColumn<GameResult, String> step;
 
     @FXML
-    private TableColumn<GameResult, ZonedDateTime> created;
+    private TableColumn<GameResult, String> solved;
 
-    private GameResultDao gameResultDao;
+    @FXML
+    private TableColumn<GameResult, String> date;
+
+
+    private String userName2;
+    private String step2;
+    private String solved2;
 
     public void back(ActionEvent actionEvent) throws IOException {
 
@@ -53,64 +48,19 @@ public class ListController {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        log.info("Loading launch scene.");
+        Logger.info("Loading launch scene.");
     }
 
-
-    @FXML
-    public void initialize() {
-        gameResultDao = GameResultDao.getInstance();
-
-        List<GameResult> toptenList = gameResultDao.findBest(10);
-
-        player.setCellValueFactory(new PropertyValueFactory<>("player"));
-        steps.setCellValueFactory(new PropertyValueFactory<>("steps"));
-        duration.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        created.setCellValueFactory(new PropertyValueFactory<>("created"));
-
-
-        duration.setCellFactory(column -> {
-            TableCell<GameResult, Duration> cell = new TableCell<GameResult, Duration>() {
-
-                @Override
-                protected void updateItem(Duration item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if(empty) {
-                        setText(null);
-                    }
-                    else {
-                        setText(DurationFormatUtils.formatDuration(item.toMillis(),"H:mm:ss"));
-                    }
-                }
-            };
-
-            return cell;
-        });
-
-        created.setCellFactory(column -> {
-            TableCell<GameResult, ZonedDateTime> cell = new TableCell<GameResult, ZonedDateTime>() {
-                private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss Z");
-
-                @Override
-                protected void updateItem(ZonedDateTime item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if(empty) {
-                        setText(null);
-                    }
-                    else {
-                        setText(item.format(formatter));
-                    }
-                }
-            };
-
-            return cell;
-        });
-
+    public void initialize(){
+        List<GameResult> leaderboardList = GameResultDeserializer.deserialize();
+        userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        step.setCellValueFactory(new PropertyValueFactory<>("step"));
+        solved.setCellValueFactory(new PropertyValueFactory<>("solved"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
         ObservableList<GameResult> observableResult = FXCollections.observableArrayList();
-        observableResult.addAll(toptenList);
-
-        toptenTable.setItems(observableResult);
+        observableResult.addAll(leaderboardList);
+        playerListTable.setItems(observableResult);
+        Logger.info("Loading leaderboard..");
     }
-    */
 
 }

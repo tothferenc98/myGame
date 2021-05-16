@@ -1,6 +1,8 @@
 package myGame.controller;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
@@ -20,6 +22,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import javafx.stage.Stage;
+import myGame.model.results.GameResult;
+import myGame.model.results.GameResultSerializer;
 import org.tinylog.Logger;
 
 import myGame.model.BoardGameModel;
@@ -117,17 +121,16 @@ public class BoardGameController {
         Position original = new Position(1,4);
         positionChange(model.circlePosition, original);
         model.circlePosition=original;
-
     }
 
     public void finishGame(ActionEvent actionEvent) throws IOException {
-
+        GameResult result = new GameResult(usernameLabel.getText(), stepLabel.getText(),  solvedLabel.getText(),ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd. - HH:mm:ss")));
+        GameResultSerializer.serialize(result);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/list.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-
     }
 
     private void left() {
