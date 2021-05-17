@@ -36,16 +36,142 @@ public class myGameModelTest {
 
     @Test
     void testgetValidMoves(){
+        testModel.circlePosition=new Position(0,0);
+        ArrayList<PawnDirection> testValidMoves = new ArrayList();
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(0,1);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(0,2);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.LEFT);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(0,3);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(0,4);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(0,5);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(0,6);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(1,0);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(1,1);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(1,2);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.LEFT);
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(1,6);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.LEFT);
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+
+        testModel.circlePosition=new Position(2,1);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        assertNotEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(2,2);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertNotEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(2,3);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.LEFT);
+        assertNotEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(2,5);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertNotEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(2,6);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertNotEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(3,1);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.LEFT);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(3,3);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(3,4);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(3,5);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+
+/*
         testModel.circlePosition=new Position(5,3);
         ArrayList<PawnDirection> testValidMoves = new ArrayList();
         testValidMoves.add(PawnDirection.UP);
         testValidMoves.add(PawnDirection.RIGHT);
         testValidMoves.add(PawnDirection.DOWN);
         assertEquals(testValidMoves, testModel.getValidMoves());
+
+ */
     }
 
     @Test
     void testMove(){
+        testModel.circlePosition=new Position(1,4);
         expected= new Position(1,0);
         testModel.move(PawnDirection.LEFT);
         assertEquals(expected ,testModel.circlePosition);

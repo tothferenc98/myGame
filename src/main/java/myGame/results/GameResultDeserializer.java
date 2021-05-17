@@ -9,14 +9,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains the {@code deserialize()} method.
+ */
 public class GameResultDeserializer {
-
+    /**
+     * Reads the {@link GameResult} objects from file.
+     * @return a list of {@link GameResult} objects.
+     */
     public static List<GameResult> deserialize(){
         List<GameResult> gameResultList = new ArrayList<>();
         try{
             ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule());
-            File file = new File("./scoreboard.json");
+            File file = new File(System.getProperty("user.dir")+ File.separator +"scoreboard.json");
             if(!file.exists()) {
                 file.createNewFile();
                 return List.of();
