@@ -1,12 +1,10 @@
-package myGame.controller;
+package myGame.javafx.controller;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,8 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import javafx.stage.Stage;
-import myGame.model.results.GameResult;
-import myGame.model.results.GameResultSerializer;
+import myGame.results.GameResult;
+import myGame.results.GameResultSerializer;
 import org.tinylog.Logger;
 
 import myGame.model.BoardGameModel;
@@ -74,7 +72,6 @@ public class BoardGameController {
         {
             if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
                 left();
-
             }
             else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
                 right();
@@ -243,102 +240,6 @@ public class BoardGameController {
     }
 
 
-
-/*
-    private void createPieces() {
-        for (int i = 0; i < model.getPieceCount(); i++) {
-            model.positionProperty(i).addListener(this::piecePositionChange);
-            var piece = new Circle(50);
-            piece.setFill(Color.BLUE);
-            getSquare(model.getPiecePosition(i)).getChildren().add(piece);
-        }
-    }
-
-    @FXML
-    private void handleMouseClick(MouseEvent event) {
-        var square = (StackPane) event.getSource();
-        var row = GridPane.getRowIndex(square);
-        var col = GridPane.getColumnIndex(square);
-        var position = new Position(row, col);
-        Logger.debug("Click on square {}", position);
-        handleClickOnSquare(position);
-    }
-
-    private void handleClickOnSquare(Position position) {
-        switch (selectionPhase) {
-            case SELECT_FROM -> {
-                if (selectablePositions.contains(position)) {
-                    selectPosition(position);
-                    alterSelectionPhase();
-                }
-            }
-            case SELECT_TO -> {
-                if (selectablePositions.contains(position)) {
-                    var pieceNumber = model.getPieceNumber(selected).getAsInt();
-                    var direction = PawnDirection.of(position.row() - selected.row(), position.col() - selected.col());
-                    Logger.debug("Moving piece {} {}", pieceNumber, direction);
-                    model.move(pieceNumber, direction);
-                    deselectSelectedPosition();
-                    alterSelectionPhase();
-                }
-            }
-        }
-    }
-
-    private void alterSelectionPhase() {
-        selectionPhase = selectionPhase.alter();
-        hideSelectablePositions();
-        setSelectablePositions();
-        showSelectablePositions();
-    }
-
-    private void selectPosition(Position position) {
-        selected = position;
-        showSelectedPosition();
-    }
-
-    private void showSelectedPosition() {
-        var square = getSquare(selected);
-        square.getStyleClass().add("selected");
-    }
-
-    private void deselectSelectedPosition() {
-        hideSelectedPosition();
-        selected = null;
-    }
-
-    private void hideSelectedPosition() {
-        var square = getSquare(selected);
-        square.getStyleClass().remove("selected");
-    }
-
-    private void setSelectablePositions() {
-        selectablePositions.clear();
-        switch (selectionPhase) {
-            case SELECT_FROM -> selectablePositions.addAll(model.getPiecePositions());
-            case SELECT_TO -> {
-                var pieceNumber = model.getPieceNumber(selected).getAsInt();
-                for (var direction : model.getValidMoves(pieceNumber)) {
-                    selectablePositions.add(selected.moveTo(direction));
-                }
-            }
-        }
-    }
-
-    private void showSelectablePositions() {
-        for (var selectablePosition : selectablePositions) {
-            var square = getSquare(selectablePosition);
-            square.getStyleClass().add("selectable");
-        }
-    }
-
-    private void hideSelectablePositions() {
-        for (var selectablePosition : selectablePositions) {
-            var square = getSquare(selectablePosition);
-            square.getStyleClass().remove("selectable");
-        }
-    }
-*/
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
             if (GridPane.getRowIndex(child) == position.row() && GridPane.getColumnIndex(child) == position.col()) {
@@ -348,7 +249,7 @@ public class BoardGameController {
         throw new AssertionError();
     }
 
-    private void positionChange(Position oldPosition, Position newPosition) throws IOException { //ObservableValue<? extends Position> observable,
+    private void positionChange(Position oldPosition, Position newPosition) throws IOException {
         Logger.info("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
         StackPane newSquare = getSquare(newPosition);
@@ -362,7 +263,5 @@ public class BoardGameController {
             solvedLabel.setText("Victory");
 
         }
-
     }
-
 }

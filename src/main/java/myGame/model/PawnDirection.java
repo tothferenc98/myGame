@@ -1,5 +1,8 @@
 package myGame.model;
 
+/**
+ * Enum for representing the ball moves in the table.
+ */
 public enum PawnDirection implements Direction {
 
 
@@ -16,21 +19,22 @@ public enum PawnDirection implements Direction {
         this.colChange = colChange;
     }
 
+    /**
+     * Returns the number of rows changing vertically.
+     *
+     * @return Return the change vertically
+     */
     public int getRowChange() {
         return rowChange;
     }
 
+    /**
+     * Returns the number of columns changing horizontally.
+     *
+     * @return Return the change horizontally
+     */
     public int getColChange() {
         return colChange;
-    }
-
-    public static PawnDirection of(int rowChange, int colChange) {
-        for (var direction : values()) {
-            if (direction.rowChange == rowChange && direction.colChange == colChange) {
-                return direction;
-            }
-        }
-        throw new IllegalArgumentException();
     }
 
     public static void main(String[] args) {

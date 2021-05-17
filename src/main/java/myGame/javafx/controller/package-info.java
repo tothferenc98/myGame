@@ -2,4 +2,4 @@
  * This package contains all controller classes.
  */
 
-package myGame.controller;
+package myGame.javafx.controller;

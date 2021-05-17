@@ -3,19 +3,20 @@ package myGame.model;
 import org.tinylog.Logger;
 import java.util.*;
 
+/**
+ * This class contains the data and methods of the model.
+ */
 public class BoardGameModel {
     public Position circlePosition = new Position(1,4);
 
     public static int BOARD_SIZE = 7;
 
-    public BoardGameModel() {
-
-    }
+    public BoardGameModel() {}
 
 
     /**
-     *
-     * @param direction
+     * Move {@code direction} direction as long as valid for the step.
+     * @param direction the direction of the player
      */
     public void move(PawnDirection direction){
         while(true){
@@ -32,9 +33,9 @@ public class BoardGameModel {
     }
 
     /**
-     *
-     * @param direction
-     * @return
+     * It checks if we can move {@code direction} or if the track is over.
+     * @param direction the direction of the player
+     * @return returns a true or false value about whether the step is valid
      */
     public boolean isValidMove(PawnDirection direction) {
 
@@ -47,8 +48,8 @@ public class BoardGameModel {
     }
 
     /**
-     *
-     * @return
+     * Checks the directions in which the model is allowed to move in the given position.
+     * @return Returns the arraylist of valid steps
      */
     public ArrayList<PawnDirection> getValidMoves() {
         ArrayList<PawnDirection> validMoves = new ArrayList();
@@ -235,26 +236,21 @@ public class BoardGameModel {
     }
 
     /**
-     *
-     * @param position
-     * @return
+     * Returns whether the model is on the board in the given {@code position} position.
+     * @param position The position of the model is given as a parameter
+     * @return Returns whether it is on the board as a true or false value
      */
     public static boolean isOnBoard(Position position) {
         return 0 <= position.row() && position.row() < BOARD_SIZE
                 && 0 <= position.col() && position.col() < BOARD_SIZE;
     }
 
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
+        /*
         BoardGameModel model = new BoardGameModel();
-        //System.out.println(model + "dasdadsd");
-        //model.move(PawnDirection.DOWN);
-        //System.out.println(model.circlePosition.toString());
-
-
+        System.out.println(model + "dasdadsd");
+        model.move(PawnDirection.DOWN);
+        System.out.println(model.circlePosition.toString());
+        */
     }
-
 }

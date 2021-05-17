@@ -1,4 +1,4 @@
-package myGame.controller;
+package myGame.javafx.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,8 +12,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import myGame.model.results.GameResult;
-import myGame.model.results.GameResultDeserializer;
+import myGame.results.GameResult;
+import myGame.results.GameResultDeserializer;
 import org.tinylog.Logger;
 
 import java.io.IOException;

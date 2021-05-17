@@ -1,4 +1,4 @@
-package myGame.model.results;
+package myGame.results;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
@@ -11,9 +11,9 @@ import java.util.List;
 
 public class GameResultSerializer {
 
-    public static void serialize(myGame.model.results.GameResult gameResult) {
+    public static void serialize(myGame.results.GameResult gameResult) {
 
-        List<myGame.model.results.GameResult> gameResultList = myGame.model.results.GameResultDeserializer.deserialize();
+        List<myGame.results.GameResult> gameResultList = myGame.results.GameResultDeserializer.deserialize();
         try {
             File file = new File("./scoreboard.json");
             file.createNewFile();
@@ -22,7 +22,7 @@ public class GameResultSerializer {
             mapper.registerModule(new JavaTimeModule());
 
             SequenceWriter sequenceWriter = mapper.writer().writeValuesAsArray(fileWriter);
-            for(myGame.model.results.GameResult gameResult1: gameResultList){
+            for(myGame.results.GameResult gameResult1: gameResultList){
                 sequenceWriter.write(gameResult1);
             }
             sequenceWriter.write(gameResult);

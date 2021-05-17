@@ -1,14 +1,11 @@
-package myGame.model.results;
+package myGame.results;
 
 
 public class GameResult {
 
     private String userName;
-
     private String step;
-
     private String solved;
-
     private String date;
 
     public GameResult(String userName, String step, String solved, String date) {
