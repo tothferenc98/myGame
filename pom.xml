@@ -16,7 +16,7 @@
         </developer>
     </developers>
     <scm>
-        <developerConnection>https://github.com/tothferenc98/myGame.git</developerConnection>
+        <developerConnection>scm:https://github.com/tothferenc98/myGame.git</developerConnection>
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
