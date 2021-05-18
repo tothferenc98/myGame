@@ -1,6 +1,8 @@
 package myGame.results;
 
-
+/**
+ * This class represents the result of the game played by the player.
+ */
 public class GameResult {
 
     private String userName;
@@ -8,6 +10,13 @@ public class GameResult {
     private String solved;
     private String date;
 
+    /**
+     * GameResult's constructor. Initializes the player name, the number of steps, and the date.
+     * @param userName  is the player name
+     * @param step gives the number of steps of the ball
+     * @param solved indicates whether it has reached the target state
+     * @param date get the end time of the game state
+     */
     public GameResult(String userName, String step, String solved, String date) {
         this.userName = userName;
         this.step = step;
@@ -15,6 +24,9 @@ public class GameResult {
         this.date = date;
     }
 
+    /**
+     * Constructor without argument.
+     */
     public GameResult(){}
 
     public String getUserName() {

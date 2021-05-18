@@ -10,21 +10,21 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myGame.javafx.controller.LaunchController">
    <children>
-      <Label layoutX="244.0" layoutY="204.0" text="myGame" textFill="#002366">
+      <Label layoutX="244.0" layoutY="21.0" text="myGame" textFill="#002366">
          <font>
             <Font name="MathJax_Main-Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="202.0" layoutY="329.0" text="Username:" />
-      <TextField fx:id="usernameTextfield" layoutX="292.0" layoutY="324.0" prefHeight="26.0" prefWidth="158.0" />
-      <Button fx:id="startButton" layoutX="273.0" layoutY="396.0" mnemonicParsing="false" onAction="#startAction" prefHeight="51.0" prefWidth="105.0" text="Start game" />
-      <Label fx:id="errorLabel" layoutX="296.0" layoutY="294.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e" />
-      <Label layoutX="59.0" layoutY="471.0" prefHeight="201.0" prefWidth="534.0" text="Juttassuk el a golyót a labirintus megjelölt mezőjére! A golyó a négy égtáj irányába mozoghat. Ha elindul valamelyik irányba, akkor addig gurul, amíg falba vagy a pálya szélébe nem ütközik." textAlignment="CENTER" textFill="#002366" wrapText="true">
+      <Label layoutX="202.0" layoutY="132.0" text="Username:" />
+      <TextField fx:id="usernameTextfield" layoutX="292.0" layoutY="127.0" prefHeight="26.0" prefWidth="158.0" />
+      <Button fx:id="startButton" layoutX="273.0" layoutY="199.0" mnemonicParsing="false" onAction="#startAction" prefHeight="51.0" prefWidth="105.0" text="Start game" />
+      <Label fx:id="errorLabel" layoutX="296.0" layoutY="97.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e" />
+      <Label layoutX="59.0" layoutY="266.0" prefHeight="201.0" prefWidth="534.0" text="Juttassuk el a golyót a labirintus megjelölt mezőjére! A golyó a négy égtáj irányába mozoghat. Ha elindul valamelyik irányba, akkor addig gurul, amíg falba vagy a pálya szélébe nem ütközik." textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="SansSerif Bold" size="23.0" />
+            <Font name="SansSerif Regular" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="185.0" fitWidth="370.0" layoutX="141.0" layoutY="14.0">
+      <ImageView fitHeight="201.0" fitWidth="261.0" layoutX="196.0" layoutY="473.0">
          <image>
             <Image url="@../WASD.png" />
          </image>

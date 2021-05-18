@@ -198,12 +198,6 @@ public class BoardGameModel {
                 validMoves.add(PawnDirection.LEFT);
                 validMoves.add(PawnDirection.DOWN);
             }
-            else if (isValidMove(direction) && circlePosition.equals(new Position(5,4))) {
-                validMoves.clear();
-                validMoves.add(PawnDirection.RIGHT);
-                validMoves.add(PawnDirection.LEFT);
-                validMoves.add(PawnDirection.DOWN);
-            }
             else if (isValidMove(direction) && circlePosition.equals(new Position(6,2))) {
                 validMoves.clear();
                 validMoves.add(PawnDirection.RIGHT);

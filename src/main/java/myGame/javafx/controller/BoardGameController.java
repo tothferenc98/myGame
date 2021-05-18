@@ -67,19 +67,19 @@ public class BoardGameController {
     @FXML
     private void handleOnKeyPressed(KeyEvent event)
     {
-        //System.out.println(event.getCode());
+        //Logger.debug(event.getCode());
         if(inTarget==false)
         {
-            if(event.getCode()==KeyCode.LEFT || event.getCode()==KeyCode.A){
+            if(event.getCode()==KeyCode.A){
                 left();
             }
-            else if(event.getCode()==KeyCode.RIGHT || event.getCode()==KeyCode.D){
+            else if(event.getCode()==KeyCode.D){
                 right();
             }
-            else if(event.getCode()==KeyCode.UP || event.getCode()==KeyCode.W){
+            else if(event.getCode()==KeyCode.W){
                 up();
             }
-            else if(event.getCode()==KeyCode.DOWN || event.getCode()==KeyCode.S){
+            else if(event.getCode()==KeyCode.S){
                 down();
             }
         }
@@ -97,6 +97,8 @@ public class BoardGameController {
     }
 
     public void finishGame(ActionEvent actionEvent) throws IOException {
+        if(!inTarget){solvedLabel.setText("Defeat");}
+
         GameResult result = new GameResult(usernameLabel.getText(), stepLabel.getText(),  solvedLabel.getText(),ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd. - HH:mm:ss")));
         GameResultSerializer.serialize(result);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/list.fxml"));
@@ -213,7 +215,6 @@ public class BoardGameController {
     private StackPane createSquare() {
         var square = new StackPane();
         square.getStyleClass().add("square");
-/*        square.setOnMouseClicked(this::handleMouseClick);*/
         return square;
     }
 
@@ -236,7 +237,7 @@ public class BoardGameController {
 
     public void initdata(String userName) {
         this.userName = userName;
-        usernameLabel.setText("Current user: " + this.userName);
+        usernameLabel.setText(this.userName);
     }
 
 

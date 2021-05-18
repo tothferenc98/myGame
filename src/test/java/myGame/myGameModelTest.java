@@ -5,6 +5,7 @@ import myGame.model.PawnDirection;
 import myGame.model.Position;
 import org.junit.jupiter.api.Test;
 import myGame.model.BoardGameModel;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 
@@ -157,16 +158,93 @@ public class myGameModelTest {
         testValidMoves.add(PawnDirection.RIGHT);
         assertEquals(testValidMoves, testModel.getValidMoves());
 
+        testModel.circlePosition=new Position(3,6);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
 
-/*
+        testModel.circlePosition=new Position(4,0);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.UP);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(4,3);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(4,4);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(4,6);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(5,0);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.DOWN);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(5,1);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.LEFT);
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
         testModel.circlePosition=new Position(5,3);
-        ArrayList<PawnDirection> testValidMoves = new ArrayList();
+        testValidMoves.clear();
         testValidMoves.add(PawnDirection.UP);
         testValidMoves.add(PawnDirection.RIGHT);
         testValidMoves.add(PawnDirection.DOWN);
         assertEquals(testValidMoves, testModel.getValidMoves());
 
- */
+        testModel.circlePosition=new Position(5,4);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.LEFT);
+        testValidMoves.add(PawnDirection.DOWN);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(6,2);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.RIGHT);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(6,3);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(6,4);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.RIGHT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(6,5);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        testValidMoves.add(PawnDirection.LEFT);
+        assertEquals(testValidMoves, testModel.getValidMoves());
+
+        testModel.circlePosition=new Position(6,6);
+        testValidMoves.clear();
+        testValidMoves.add(PawnDirection.UP);
+        assertEquals(testValidMoves, testModel.getValidMoves());
     }
 
     @Test
@@ -175,8 +253,26 @@ public class myGameModelTest {
         expected= new Position(1,0);
         testModel.move(PawnDirection.LEFT);
         assertEquals(expected ,testModel.circlePosition);
+
+        testModel.circlePosition=new Position(0,0);
+        expected= new Position(0,0);
+        testModel.move(PawnDirection.LEFT);
+        assertEquals(expected ,testModel.circlePosition);
+
+        testModel.circlePosition=new Position(0,0);
+        expected= new Position(0,0);
+        testModel.move(PawnDirection.RIGHT);
+        assertEquals(expected ,testModel.circlePosition);
+
+
     }
 
+    @Test
+    void testPositionToString(){
+        testModel.circlePosition=new Position(1,4);
+        String expected = "(1,4)";
+        assertEquals(expected,testModel.circlePosition.toString());
+    }
 
 
 }

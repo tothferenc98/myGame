@@ -11,7 +11,7 @@
 
 <Pane onKeyPressed="#handleOnKeyPressed" prefHeight="700.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myGame.javafx.controller.BoardGameController">
    <children>
-      <Label fx:id="usernameLabel" layoutX="45.0" layoutY="7.0" prefHeight="16.0" prefWidth="565.0" text="Current user: ">
+      <Label fx:id="usernameLabel" layoutX="191.0" layoutY="7.0" prefHeight="26.0" prefWidth="419.0">
          <font>
             <Font size="22.0" />
          </font>
@@ -40,7 +40,7 @@
           </opaqueInsets>
       
       </GridPane>
-      <Button fx:id="doneButton" onAction="#finishGame" layoutX="305.0" layoutY="649.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" text="Give up" />
+      <Button fx:id="doneButton" layoutX="305.0" layoutY="649.0" mnemonicParsing="false" onAction="#finishGame" prefHeight="40.0" prefWidth="83.0" text="Give up" />
       <Label fx:id="solvedLabel" layoutX="426.0" layoutY="648.0" prefHeight="42.0" prefWidth="184.0" textFill="#002466">
          <font>
             <Font size="18.0" />
@@ -56,6 +56,11 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="resetButton" layoutX="190.0" layoutY="649.0" onAction="#resetGame" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" text="Reset" />
+      <Button fx:id="resetButton" layoutX="190.0" layoutY="649.0" mnemonicParsing="false" onAction="#resetGame" prefHeight="40.0" prefWidth="83.0" text="Reset" />
+      <Label layoutX="39.0" layoutY="7.0" text="Current user:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
