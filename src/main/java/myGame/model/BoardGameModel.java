@@ -7,10 +7,19 @@ import java.util.*;
  * This class contains the data and methods of the model.
  */
 public class BoardGameModel {
+    /**
+     * Create the circlePosition.
+     */
     public Position circlePosition = new Position(1,4);
 
+    /**
+     * We create a static variable BOARD_SIZE of type int, which specifies the size of the board.
+     */
     public static int BOARD_SIZE = 7;
 
+    /**
+     * Constructor without args.
+     */
     public BoardGameModel() {}
 
 
@@ -239,6 +248,10 @@ public class BoardGameModel {
                 && 0 <= position.col() && position.col() < BOARD_SIZE;
     }
 
+    /**
+     * BoardGameModel's Main method.
+     * @param args args
+     */
     public static void main(String[] args) {
         /*
         BoardGameModel model = new BoardGameModel();

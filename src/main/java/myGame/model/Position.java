@@ -4,6 +4,8 @@ import java.util.Objects;
 
 /**
  * Record class for representing a position on the gameboard.
+ *  @param row Receive the line number of the position
+ *  @param col Receive the column number of the position
  */
 public record Position(int row, int col) {
 
@@ -25,7 +27,7 @@ public record Position(int row, int col) {
     }
 
     /**
-     * Checks if the two objects are equal
+     * Checks if the two objects are equal.
      * @param o object
      * @return a true or false value depending on whether they equals
      */
