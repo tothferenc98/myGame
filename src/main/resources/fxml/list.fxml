@@ -14,7 +14,7 @@
             <TableColumn fx:id="userName" prefWidth="200.0" text="Player" />
             <TableColumn fx:id="step" prefWidth="50.0" text="Steps" />
             <TableColumn fx:id="solved" prefWidth="120.0" text="Result" />
-            <TableColumn fx:id="date" prefWidth="225.0" text="Date" />
+            <TableColumn fx:id="dateTime" prefWidth="225.0" text="DateTime" />
         </columns>
       </TableView>
       <Label layoutX="267.0" layoutY="32.0" text="Player list:">

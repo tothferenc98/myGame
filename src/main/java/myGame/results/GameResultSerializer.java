@@ -20,11 +20,13 @@ public class GameResultSerializer {
     public static void serialize(myGame.results.GameResult gameResult) {
 
         List<myGame.results.GameResult> gameResultList = myGame.results.GameResultDeserializer.deserialize();
+
         try {
             File file = new File(System.getProperty("user.dir")+File.separator+"scoreboard.json");
             file.createNewFile();
             FileWriter fileWriter = new FileWriter(file);
             ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
 
             SequenceWriter sequenceWriter = mapper.writer().writeValuesAsArray(fileWriter);
             for(myGame.results.GameResult gameResult1: gameResultList){
@@ -35,6 +37,7 @@ public class GameResultSerializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 }

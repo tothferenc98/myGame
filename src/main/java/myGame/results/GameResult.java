@@ -1,5 +1,7 @@
 package myGame.results;
 
+import java.time.ZonedDateTime;
+
 /**
  * This class represents the result of the game played by the player.
  */
@@ -8,20 +10,19 @@ public class GameResult {
     private String userName;
     private String step;
     private String solved;
-    private String date;
+    private ZonedDateTime dateTime;
 
     /**
      * GameResult's constructor. Initializes the player name, the number of steps, and the date.
      * @param userName  is the player name
      * @param step gives the number of steps of the ball
      * @param solved indicates whether it has reached the target state
-     * @param date get the end time of the game state
      */
-    public GameResult(String userName, String step, String solved, String date) {
+    public GameResult(String userName, String step, String solved) {
         this.userName = userName;
         this.step = step;
         this.solved = solved;
-        this.date = date;
+        this.dateTime=ZonedDateTime.now().plusHours(2);
     }
 
     /**
@@ -41,8 +42,8 @@ public class GameResult {
         return solved;
     }
 
-    public String getDate() {
-        return date;
+    public ZonedDateTime getDateTime() {
+        return dateTime;
     }
 
     public void setUserName(String userName) {
@@ -57,8 +58,8 @@ public class GameResult {
         this.solved = solved;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateTime(ZonedDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
 }

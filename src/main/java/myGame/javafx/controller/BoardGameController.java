@@ -99,7 +99,7 @@ public class BoardGameController {
     public void finishGame(ActionEvent actionEvent) throws IOException {
         if(!inTarget){solvedLabel.setText("Defeat");}
 
-        GameResult result = new GameResult(usernameLabel.getText(), stepLabel.getText(),  solvedLabel.getText(),ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd. - HH:mm:ss")));
+        GameResult result = new GameResult(usernameLabel.getText(), stepLabel.getText(),  solvedLabel.getText());
         GameResultSerializer.serialize(result);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/list.fxml"));
         Parent root = fxmlLoader.load();

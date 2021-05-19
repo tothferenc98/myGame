@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,6 +18,8 @@ import myGame.results.GameResultDeserializer;
 import org.tinylog.Logger;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -35,12 +38,8 @@ public class ListController {
     private TableColumn<GameResult, String> solved;
 
     @FXML
-    private TableColumn<GameResult, String> date;
+    private TableColumn<GameResult, ZonedDateTime> dateTime;
 
-
-    private String userName2;
-    private String step2;
-    private String solved2;
 
     public void back(ActionEvent actionEvent) throws IOException {
 
@@ -57,11 +56,32 @@ public class ListController {
         userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         step.setCellValueFactory(new PropertyValueFactory<>("step"));
         solved.setCellValueFactory(new PropertyValueFactory<>("solved"));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
+
+        dateTime.setCellFactory(column -> {
+            TableCell<GameResult, ZonedDateTime> cell = new TableCell<GameResult, ZonedDateTime>() {
+                private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
+
+                @Override
+                protected void updateItem(ZonedDateTime item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if(empty) {
+                        setText(null);
+                    }
+                    else {
+                        setText(item.format(formatter));
+                    }
+                }
+            };
+
+            return cell;
+        });
         ObservableList<GameResult> observableResult = FXCollections.observableArrayList();
         observableResult.addAll(leaderboardList);
         playerListTable.setItems(observableResult);
         Logger.info("Loading scoreboard");
+
+
     }
 
 }

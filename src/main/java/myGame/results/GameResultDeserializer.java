@@ -21,6 +21,7 @@ public class GameResultDeserializer {
         List<GameResult> gameResultList = new ArrayList<>();
         try{
             ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
             File file = new File(System.getProperty("user.dir")+ File.separator +"scoreboard.json");
             if(!file.exists()) {
                 file.createNewFile();
