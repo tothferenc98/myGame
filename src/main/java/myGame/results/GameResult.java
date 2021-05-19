@@ -1,6 +1,6 @@
 package myGame.results;
 
-import java.time.ZonedDateTime;
+import java.time.*;
 
 /**
  * This class represents the result of the game played by the player.
@@ -22,7 +22,8 @@ public class GameResult {
         this.userName = userName;
         this.step = step;
         this.solved = solved;
-        this.dateTime=ZonedDateTime.now().plusHours(2);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        this.dateTime=ZonedDateTime.of(localDateTime, ZoneId.of("UTC"));;
     }
 
     /**
